@@ -1,0 +1,1 @@
+kubectl get secret --namespace clickhouse clickhouse -o jsonpath="{.data.admin-password}" | base64 -d; echo
