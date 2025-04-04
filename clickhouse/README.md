@@ -12,11 +12,18 @@ Retrieve `default` user credentials from kubernetes secret.
 kubectl get secret --namespace clickhouse clickhouse -o jsonpath="{.data.admin-password}" | base64 -d; echo
 ```
 
-As we do not have an ingress in minikube, forward traffic to the clickhouse service on all ports.
+## Port-forwarding
+
+To access Clickhouse from localhost, set up port-forwarding using the following `kubectl` command:
 
 ```bash
-kubectl port-forward -n clickhouse svc/clickhouse 8123:8123
+# Forward ClickHouse service to respective local port
+kubectl port-forward svc/clickhouse 8123:8123 -n clickhouse
 ```
+
+After running these command, you can access the service at `https://localhost:<port>` via the specified local port.
+
+## Ports
 
 Here's a brief description of each port used by ClickHouse:
 
