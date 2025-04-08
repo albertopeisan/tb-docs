@@ -1,5 +1,13 @@
 # Grafana
 
+## Retrieve password
+
+Default user for Granafa is `admin` and password can be retrieve using the following command:
+
+```bash
+kubectl get secret --namespace grafana grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```
+
 ## Port-forwarding
 
 To access Grafana from localhost, set up port-forwarding using the following `kubectl` command:
